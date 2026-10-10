@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">ChatGPT Gamepad</title><desc id="desc">Talk. Send. Scroll. One tiny controller. B starts a new chat; A continues the current one.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111b29"/><stop offset="1" stop-color="#183b3b"/></linearGradient></defs>
+<rect width="1200" height="620" rx="24" fill="url(#bg)"/>
+<g fill="none" stroke="#ffffff" opacity=".045"><path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M150 0V620M300 0V620M450 0V620M600 0V620M750 0V620M900 0V620M1050 0V620"/></g>
+<rect x="62" y="52" width="214" height="34" rx="17" fill="#243f40"/><text x="80" y="75" fill="#99efc8" font-family="Arial,sans-serif" font-size="14" font-weight="bold" letter-spacing="2">CHATGPT GAMEPAD</text>
+<g font-family="Arial,sans-serif" fill="#f5f7f3" font-weight="bold" font-size="70"><text x="60" y="180">Talk. Send.</text><text x="60" y="258">Scroll.</text></g>
+<text x="64" y="311" fill="#b6c9c7" font-family="Arial,sans-serif" font-size="26">One tiny controller.</text>
+<g transform="translate(685 112)"><rect width="436" height="257" rx="54" fill="#080f18" stroke="#53666a" stroke-width="2"/><rect x="13" y="13" width="410" height="231" rx="44" fill="#1d2a39"/>
+<path d="M84 64h37v42h42v37h-42v42H84v-42H42v-37h42z" fill="#0b1420" stroke="#4c5d6c" stroke-width="2"/>
+<circle cx="213" cy="128" r="17" fill="#0f1b27" stroke="#617380"/><path d="M211 121v11h8" fill="none" stroke="#a1b6bc" stroke-width="2"/>
+<g font-family="Arial,sans-serif" font-weight="bold" font-size="22" text-anchor="middle"><circle cx="332" cy="67" r="27" fill="#354657"/><text x="332" y="75" fill="#bdd0dc">Y</text><circle cx="275" cy="123" r="27" fill="#354657"/><text x="275" y="131" fill="#bdd0dc">X</text><circle cx="388" cy="123" r="27" fill="#eaa373"/><text x="388" y="131" fill="#172132">B</text><circle cx="332" cy="180" r="27" fill="#97e4c2"/><text x="332" y="188" fill="#172132">A</text></g>
+<text x="40" y="221" fill="#7a949e" font-family="Arial,sans-serif" font-size="12" letter-spacing="3">SMALL REMOTE. BIG IDEAS.</text></g>
+<g font-family="Arial,sans-serif"><rect x="66" y="392" width="517" height="68" rx="13" fill="#203340" stroke="#415560"/><circle cx="100" cy="426" r="19" fill="#eaa373"/><text x="94" y="433" font-size="20" font-weight="bold" fill="#162434">B</text><text x="136" y="434" font-size="23" fill="#f3f7f3">New chat → speak → send</text>
+<rect x="66" y="474" width="517" height="68" rx="13" fill="#203340" stroke="#415560"/><circle cx="100" cy="508" r="19" fill="#97e4c2"/><text x="93" y="515" font-size="20" font-weight="bold" fill="#162434">A</text><text x="136" y="516" font-size="23" fill="#f3f7f3">Current chat → speak → send</text>
+<text x="712" y="434" fill="#a9c0c1" font-size="20">↑ ↓  Read long answers</text><text x="712" y="477" fill="#a9c0c1" font-size="20">← →  Browse recent chats</text><text x="712" y="544" fill="#91e2bd" font-size="15" letter-spacing="1">WINDOWS + CHROME · NO API KEY</text></g></svg>

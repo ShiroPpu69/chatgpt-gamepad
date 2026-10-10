@@ -1,0 +1,28 @@
+name: Bug report
+description: Help reproduce a controller, dictation, navigation, or scrolling problem.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: '0.7.1'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows version, Chrome version, controller model and connection mode
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What happened, and how can we reproduce it?
+      description: Include the button sequence, expected behavior, and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Share only relevant controller.log lines. Remove private information. Never attach config.json or extension/local-config.js.

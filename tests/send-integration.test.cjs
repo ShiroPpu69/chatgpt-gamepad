@@ -1,0 +1,26 @@
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const {parseHTML}=require('linkedom');
+const vm=require('node:vm');
+const fs=require('node:fs');
+const path=require('node:path');
+const VoiceDOM=require('../extension/voice-dom.js');
+const ComposerDOM=require('../extension/composer-dom.js');
+test('full content-script workflow submits transcribed textarea text via unlabeled arrow',async()=>{
+  const {document,HTMLElement}=parseHTML('<html><body><main><form><textarea id="chat-input"></textarea><button id="mic" type="button" aria-label="听写"></button><button id="confirm" type="button" aria-label="Submit dictation" hidden></button><button id="cancel" type="button" aria-label="Cancel dictation" hidden></button><button id="send" type="submit" hidden><svg></svg></button></form></main></body></html>');
+  HTMLElement.prototype.getClientRects=function(){return this.closest('[hidden]')?[]:[{}];};
+  const mic=document.getElementById('mic'),confirm=document.getElementById('confirm'),cancel=document.getElementById('cancel'),send=document.getElementById('send'),input=document.getElementById('chat-input');
+  let sent=0,listener;
+  mic.click=()=>{mic.hidden=true;confirm.hidden=false;cancel.hidden=false;};
+  confirm.click=()=>{confirm.hidden=true;cancel.hidden=true;mic.hidden=false;input.value='需要直接发送的听写文字';send.hidden=false;};
+  send.click=()=>{sent++;input.value='';send.hidden=true;};
+  const context=vm.createContext({document,VoiceDOM,ComposerDOM,setTimeout,setInterval:()=>{},location:{pathname:'/',href:'https://chatgpt.com/',origin:'https://chatgpt.com'},chrome:{runtime:{onMessage:{addListener:fn=>listener=fn},sendMessage:async()=>{}}}});
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../extension/content.js'),'utf8'),context);
+  const action=action=>new Promise(resolve=>listener({type:'voice-control',action,mode:'dictation'},{},resolve));
+  assert.equal((await action('start')).state,'active');
+  const result=await action('stop_send');
+  assert.equal(result.ok,true);
+  assert.equal(result.sent,true);
+  assert.equal(sent,1);
+  assert.equal(input.value,'');
+});

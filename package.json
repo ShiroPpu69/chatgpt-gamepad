@@ -1,0 +1,13 @@
+{
+  "name": "chatgpt-gamepad",
+  "version": "0.7.1",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  },
+  "description": "A tiny gamepad remote for ChatGPT: talk, send, scroll, and switch chats.",
+  "license": "MIT"
+}

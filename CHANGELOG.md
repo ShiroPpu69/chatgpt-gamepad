@@ -1,0 +1,13 @@
+# Changelog
+
+## 0.7.1 — first public release
+
+- B creates a fresh ChatGPT conversation and starts dictation; pressing it again confirms transcription and sends it.
+- A starts dictation in the current conversation; pressing it again sends it there.
+- Up/down smoothly scroll the conversation without mouse or keyboard injection, including reverse layouts with negative scroll offsets.
+- Left/right navigate ordinary conversations in Recent, excluding known pinned and project conversations.
+- Controls become available when the required UI appears, without waiting for all page resources.
+- Windows login startup and a silent background listener remove the need to open the controller window each session.
+- Local pairing, calibrated A/B buttons, 65 JavaScript tests and 14 Python tests.
+
+The implementation was verified by its first user with a SHANWAN Q36XDV in X mode on Windows and Chrome. Other controllers need compatibility testing.

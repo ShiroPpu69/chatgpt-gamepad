@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+config.json
+*.log
+config.tmp
+dist/
+extension/local-config.js
+node_modules/
