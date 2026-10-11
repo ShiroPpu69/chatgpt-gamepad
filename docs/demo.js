@@ -1,7 +1,12 @@
-let recording=null,chat=1;
+let recording=null,chat=1,reading=false;
 const name=document.getElementById('chat-name'),composer=document.getElementById('composer'),messages=document.getElementById('messages');
 function title(){name.textContent='Sample conversation '+chat;}
 function act(key){
+  if(key==='x'){
+    if(recording){composer.textContent='Finish dictation before reading aloud.';return;}
+    if(!messages.querySelector('p')){composer.textContent='Send a prompt first to get a reply to read.';return;}
+    reading=!reading;composer.textContent=reading?'Read-aloud illustration is playing. Press X to stop.':'Read-aloud illustration stopped.';return;
+  }
   if(key==='up'||key==='down'){
     messages.scrollBy({top:key==='up'?-170:170,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});return;
   }

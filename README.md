@@ -16,7 +16,7 @@ Turn a little Bluetooth gamepad into a remote for the ChatGPT website. Press **B
 
 Built and tested with a **SHANWAN Q36XDV in X mode**, on Windows and Chrome. Other SDL-compatible gamepads may work after calibration, but are not yet verified.
 
-## One thumb, six controls
+## One thumb, seven controls
 
 | Button | What it does |
 | :--- | :--- |
@@ -28,7 +28,7 @@ Built and tested with a **SHANWAN Q36XDV in X mode**, on Windows and Chrome. Oth
 
 After sending with B, the next B starts another **fresh chat**. A keeps you in the same conversation. End recording with the button that started it.
 
-Dictation is ChatGPT's **speech-to-text microphone**, not its live voice-call mode. This project sends the resulting text prompt; it does not provide spoken replies.
+Dictation is ChatGPT's **speech-to-text microphone**, not its live voice-call mode. This project sends the resulting text prompt; press X to hear the latest reply using ChatGPT’s native Read aloud, and press X again to stop.
 
 ## Why a gamepad?
 
