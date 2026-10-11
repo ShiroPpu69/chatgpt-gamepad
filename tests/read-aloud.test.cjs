@@ -27,3 +27,15 @@ test('no assistant reply and ambiguous buttons fail clearly',async()=>{
   const d=fixture('<article><div data-message-author-role="assistant"></div><button aria-label="朗读"></button><button aria-label="Read aloud"></button></article>');
   assert.equal((await run(d,wait)).ok,false);
 });
+test('new grouped renderer ignores the earlier user footer',async()=>{
+  const d=fixture('<main><div data-turn-key="one"><div data-user-message-bubble>user</div><button id="user" aria-label="朗读"></button><div data-conversation-role="assistant">reply</div><div class="turn-action-controls"><button id="reply" aria-label="朗读"></button></div></div></main>');
+  assert.equal((await run(d,wait)).ok,true);assert.equal(d.querySelector('#reply').clicked,1);assert.equal(d.querySelector('#user').clicked,undefined);
+});
+test('agent marker and testid action work without old message attributes',async()=>{
+  const d=fixture('<main><div data-turn-key="one"><div data-chatgpt-agent-turn-start></div><p>answer</p><button data-testid="read-aloud-turn-action-button"></button></div></main>');
+  assert.equal((await run(d,wait)).ok,true);assert.equal(d.querySelector('button').clicked,1);
+});
+test('section-level assistant role identifies the latest turn',async()=>{
+  const d=fixture('<main><section data-turn="assistant"><button aria-label="朗读"></button></section></main>');
+  assert.equal((await run(d,wait)).ok,true);
+});

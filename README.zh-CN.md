@@ -93,7 +93,7 @@ npm test
 ./.venv/Scripts/python.exe controller.py --diagnose
 ```
 
-当前包含 **70 项 JavaScript 测试和 14 项 Python 测试**，覆盖听写确认与发送、最近列表过滤、长按防抖、普通与负坐标滚动。实际手柄兼容性仍需要实机验证。
+当前包含 **73 项 JavaScript 测试和 14 项 Python 测试**，覆盖听写确认与发送、最近列表过滤、长按防抖、普通与负坐标滚动。实际手柄兼容性仍需要实机验证。
 
 欢迎报告其他手柄的测试结果、修复网页适配问题。[贡献指南](CONTRIBUTING.md) · [更新日志](CHANGELOG.md) · [提交问题](https://github.com/ShiroPpu69/chatgpt-gamepad/issues/new/choose)。如果这个小工具让你的手柄有了新用途，点个 ⭐ 能帮助更多人发现它。
 

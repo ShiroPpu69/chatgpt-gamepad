@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.1
+
+- Recognize newer assistant-role markers and grouped turn containers for native Read aloud.
+- Exclude the earlier user-message footer when user and assistant share one group.
+- Add regression fixtures for the new renderer (73 JavaScript tests).
+
 ## 0.8.0
 
 - X invokes ChatGPT native Read aloud on the latest assistant reply, supporting a direct action or the reply’s More menu.

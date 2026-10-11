@@ -105,7 +105,7 @@ npm test
 ./.venv/Scripts/python.exe controller.py --diagnose
 ```
 
-**70 JavaScript tests + 14 Python tests** cover control matching, safe send behavior, recent-history filtering, repeat gates, and normal/reverse scroll coordinates. Windows CI runs both suites. Physical-device compatibility still needs real hardware testing.
+**73 JavaScript tests + 14 Python tests** cover control matching, safe send behavior, recent-history filtering, repeat gates, and normal/reverse scroll coordinates. Windows CI runs both suites. Physical-device compatibility still needs real hardware testing.
 
 Compatibility reports and small fixes are welcome. See [Contributing](CONTRIBUTING.md), [Changelog](CHANGELOG.md), or [open an issue](https://github.com/ShiroPpu69/chatgpt-gamepad/issues/new/choose). If this gives your little gamepad a new job, a ⭐ helps other people find it.
 
