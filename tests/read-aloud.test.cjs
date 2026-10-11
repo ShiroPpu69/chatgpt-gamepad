@@ -39,3 +39,25 @@ test('section-level assistant role identifies the latest turn',async()=>{
   const d=fixture('<main><section data-turn="assistant"><button aria-label="朗读"></button></section></main>');
   assert.equal((await run(d,wait)).ok,true);
 });
+test('second X stops native read aloud instead of restarting it',async()=>{
+  const d=fixture('<article><div data-turn="assistant"></div><button aria-label="朗读"></button></article>');
+  const button=d.querySelector('button');await run(d,wait);button.setAttribute('aria-label','停止朗读');
+  assert.equal((await run(d,wait)).stopped,true);assert.equal(button.clicked,2);
+  button.setAttribute('aria-label','朗读');assert.equal((await run(d,wait)).ok,true);assert.equal(button.clicked,3);
+});
+test('second X can stop a Pause control in the same native response player',async()=>{
+  const d=fixture('<article data-turn="assistant"><button aria-label="Read aloud"></button></article>');
+  const button=d.querySelector('button');await run(d,wait);button.setAttribute('aria-label','Pause');
+  assert.equal((await run(d,wait)).stopped,true);assert.equal(button.clicked,2);
+});
+test('native audio fallback only pauses the audio started by read aloud',async()=>{
+  const d=fixture('<article data-turn="assistant"><button aria-label="Read aloud"></button></article><audio id="music"></audio>');
+  const music=d.querySelector('audio');music.paused=false;music.src='music';music.pause=()=>{throw Error('unrelated audio');};
+  await run(d,wait);const audio=d.createElement('audio');audio.paused=false;audio.pause=()=>{audio.paused=true;};d.append(audio);
+  assert.equal((await run(d,wait)).stopped,true);assert.equal(audio.paused,true);
+});
+test('unknown playback never clicks Stop generating or restarts read aloud',async()=>{
+  const d=fixture('<article data-turn="assistant"><button id="read" aria-label="Read aloud"></button><button id="generate" data-testid="stop-button" aria-label="Stop"></button></article>');
+  await run(d,wait);assert.equal((await run(d,wait)).ok,false);
+  assert.equal(d.querySelector('#read').clicked,1);assert.equal(d.querySelector('#generate').clicked,undefined);
+});

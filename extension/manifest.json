@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Q36 ChatGPT Voice Controller",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "B 新建听写并发送，A 当前对话听写，上下滚动正文，左右切换最近普通对话。",
   "minimum_chrome_version": "116",
   "permissions": [

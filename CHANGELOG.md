@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.2
+
+- Press X again to stop native read-aloud playback.
+- Identify read-aloud stop/pause controls; audio fallback is scoped to playback started by this action.
+- Never use generation Stop or pause unrelated audio as a playback fallback.
+
 ## 0.8.1
 
 - Recognize newer assistant-role markers and grouped turn containers for native Read aloud.

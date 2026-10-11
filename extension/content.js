@@ -1,7 +1,7 @@
 /* Never reads chat contents or audio. Only identifies and clicks voice controls. */
 (() => {
-  if (globalThis.__Q36_CONTENT_VERSION === '0.8.1') return;
-  globalThis.__Q36_CONTENT_VERSION = '0.8.1';
+  if (globalThis.__Q36_CONTENT_VERSION === '0.8.2') return;
+  globalThis.__Q36_CONTENT_VERSION = '0.8.2';
   let busy = false;
   let mode = "dictation";
   let recordingRequested = false;

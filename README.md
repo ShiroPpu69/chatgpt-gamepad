@@ -22,7 +22,7 @@ Built and tested with a **SHANWAN Q36XDV in X mode**, on Windows and Chrome. Oth
 | :--- | :--- |
 | **B** | New chat + dictation → press again to stop, transcribe, and send |
 | **A** | Dictation in the current chat → press again to stop, transcribe, and send |
-| **X** | Click ChatGPT’s native Read aloud action for the latest assistant reply |
+| **X** | Read the latest assistant reply with ChatGPT’s native action; press again to stop |
 | **↑ / ↓** | Smoothly scroll the conversation; hold to keep moving |
 | **← / →** | Previous / next ordinary conversation in Recent |
 
@@ -105,7 +105,7 @@ npm test
 ./.venv/Scripts/python.exe controller.py --diagnose
 ```
 
-**73 JavaScript tests + 14 Python tests** cover control matching, safe send behavior, recent-history filtering, repeat gates, and normal/reverse scroll coordinates. Windows CI runs both suites. Physical-device compatibility still needs real hardware testing.
+**77 JavaScript tests + 14 Python tests** cover control matching, safe send behavior, recent-history filtering, repeat gates, and normal/reverse scroll coordinates. Windows CI runs both suites. Physical-device compatibility still needs real hardware testing.
 
 Compatibility reports and small fixes are welcome. See [Contributing](CONTRIBUTING.md), [Changelog](CHANGELOG.md), or [open an issue](https://github.com/ShiroPpu69/chatgpt-gamepad/issues/new/choose). If this gives your little gamepad a new job, a ⭐ helps other people find it.
 
