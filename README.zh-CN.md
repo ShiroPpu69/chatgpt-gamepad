@@ -58,6 +58,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\start-background.ps1
 
 后台监听会立即启动，并在以后登录 Windows 时自动运行。扩展自动连接；点击扩展图标查看连接状态。请保留项目目录，后台需要其中的 Python 环境。
 
+安装脚本也会尝试注册每分钟检查一次的 Windows 计划任务：后台退出后自动恢复，不会重复监听按键。若系统禁止注册，脚本会提示，登录启动仍保留。扩展显示「后台手柄监听：未连接」代表本地监听未连接，并不表示蓝牙手柄未配对；可以运行 `start-background.ps1` 立即恢复。
+
 取消登录自动启动：运行 `setup-background.ps1 -Disable`。当前进程会继续到注销。需要重新校准时，先在任务管理器结束本项目的后台 `pythonw.exe`，再打开原控制器窗口。
 
 ## Q36 自动回连

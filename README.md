@@ -68,6 +68,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\start-background.ps1
 
 The listener now runs silently and starts again at your next Windows sign-in. Keep Chrome open; its extension reconnects automatically. Check connection status in the extension popup. Keep the project folder in place.
 
+The setup script also attempts to register a Windows task that checks every minute and restores an exited listener. Duplicate launches do not start a second gamepad poller. If task registration is denied, login startup remains installed and a warning is shown. A disconnected listener in the popup refers to the local bridge, not Bluetooth pairing; run `start-background.ps1` to restore it immediately.
+
 To disable login startup, run `setup-background.ps1 -Disable`. The current background process continues until you sign out. To recalibrate, stop this project's background `pythonw.exe` first, then open the original control window.
 
 ## Q36 Bluetooth tip
