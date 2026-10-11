@@ -23,7 +23,7 @@ async function voiceMessage(tabId, action) {
     if (!/receiving end does not exist|could not establish connection/i.test(error.message)) throw error;
     const tab=await chrome.tabs.get(tabId);
     if (!tab.url?.startsWith('https://chatgpt.com/')) throw error;
-    await chrome.scripting.executeScript({target:{tabId},injectImmediately:true,files:['voice-dom.js','composer-dom.js','history-dom.js','conversation-scroll.js','content.js']});
+    await chrome.scripting.executeScript({target:{tabId},injectImmediately:true,files:['voice-dom.js','composer-dom.js','history-dom.js','conversation-scroll.js','read-aloud.js','content.js']});
     return await chrome.tabs.sendMessage(tabId,message);
   }
 }
@@ -70,6 +70,10 @@ async function navigateHistory(target,action) {
 }
 async function performCurrent(action) {
   const target = await currentChat();
+  if(action==='read_aloud') {
+    await focus(target);
+    return await voiceMessage(target.id,action);
+  }
   if (['scroll_up','scroll_down'].includes(action)) {
     return await voiceMessage(target.id,action);
   }
@@ -99,7 +103,7 @@ async function existingTab() {
 }
 async function perform(action) {
   await sessionReady;
-  if (['toggle_current','previous','next','scroll_up','scroll_down'].includes(action)) return await performCurrent(action);
+  if (['toggle_current','previous','next','scroll_up','scroll_down','read_aloud'].includes(action)) return await performCurrent(action);
   const tab = await existingTab();
   if (tab) {
     let probe;
@@ -153,7 +157,7 @@ async function command(message) {
   }
   working = true;
   try {
-    if (!["toggle", "stop", "toggle_current", "previous", "next", "scroll_up", "scroll_down"].includes(message.action)) throw new Error("未知动作");
+    if (!["toggle", "stop", "toggle_current", "previous", "next", "scroll_up", "scroll_down", "read_aloud"].includes(message.action)) throw new Error("未知动作");
     const result = await perform(message.action);
     send({type: "result", id: message.id, ...result});
   } catch (error) {

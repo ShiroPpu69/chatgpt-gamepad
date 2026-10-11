@@ -170,11 +170,16 @@ test('a page missing its listener receives immediate injection before retrying',
   assert.equal(app.injections.length,1);
   assert.equal(app.injections[0].injectImmediately,true);
   assert.equal(app.injections[0].target.tabId,101);
-  assert.deepEqual(Array.from(app.injections[0].files),['voice-dom.js','composer-dom.js','history-dom.js','conversation-scroll.js','content.js']);
+  assert.deepEqual(Array.from(app.injections[0].files),['voice-dom.js','composer-dom.js','history-dom.js','conversation-scroll.js','read-aloud.js','content.js']);
   assert.deepEqual(app.requests.map(x=>x[1]),['probe','probe','start']);
 });
 
 test('content scripts start before DOM or resource loading completes', () => {
   const manifest=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'../extension/manifest.json'),'utf8'));
   assert.equal(manifest.content_scripts[0].run_at,'document_start');
+});
+
+ test('X invokes read aloud in the current chat without creating or changing a voice session',async()=>{
+const app=setup({tabId:7,state:'idle'},[{ok:true,state:'idle'}],[{id:7,url:'https://chatgpt.com/c/current',windowId:10}]);
+await app.perform('read_aloud');assert.equal(app.created,0);assert.deepEqual(app.requests.map(x=>x[1]),['read_aloud']);assert.equal(app.stored.tabId,7);
 });

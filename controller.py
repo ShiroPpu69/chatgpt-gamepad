@@ -29,6 +29,7 @@ def load_config():
     config.setdefault("controller_name", "")
     config.setdefault("button", None)
     config.setdefault("button_a", 0 if "xbox" in config.get("controller_name", "").lower() else None)
+    config.setdefault("button_x", 2 if "xbox" in config.get("controller_name", "").lower() else None)
     save_config(config)
     return config
 
@@ -82,7 +83,7 @@ class RepeatGate(EdgeGate):
 
 
 def input_gates():
-    return {key: RepeatGate() if key in ("up", "down") else EdgeGate() for key in ("b", "a", "up", "down", "left", "right")}
+    return {key: RepeatGate() if key in ("up", "down") else EdgeGate() for key in ("b", "a", "x", "up", "down", "left", "right")}
 
 
 class GamepadWorker(threading.Thread):
@@ -163,7 +164,7 @@ class GamepadWorker(threading.Thread):
                         calibration_previous = buttons
                     else:
                         now = time.monotonic()
-                        for name, config_key, action in (("b", "button", "toggle"), ("a", "button_a", "toggle_current")):
+                        for name, config_key, action in (("b", "button", "toggle"), ("a", "button_a", "toggle_current"), ("x", "button_x", "read_aloud")):
                             n = self.config.get(config_key)
                             pressed = n is not None and 0 <= n < len(buttons) and buttons[n]
                             if gates[name].update(pressed, now):

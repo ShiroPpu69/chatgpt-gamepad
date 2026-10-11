@@ -1,7 +1,7 @@
 /* Never reads chat contents or audio. Only identifies and clicks voice controls. */
 (() => {
-  if (globalThis.__Q36_CONTENT_VERSION === '0.7.1') return;
-  globalThis.__Q36_CONTENT_VERSION = '0.7.1';
+  if (globalThis.__Q36_CONTENT_VERSION === '0.8.0') return;
+  globalThis.__Q36_CONTENT_VERSION = '0.8.0';
   let busy = false;
   let mode = "dictation";
   let recordingRequested = false;
@@ -53,6 +53,10 @@
     sendAttempted = false;
     try {
       if (action === "probe") return {ok: true, state: state(), page: location.pathname};
+      if (action === 'read_aloud') {
+        if(state()==='active') return {ok:false,state:'active',message:'请先结束录音并发送，再按 X 朗读，避免录入播放声音。'};
+        return {...await ReadAloud.run(document,waitFor),state:state()};
+      }
       if (action === "send") return await sendTranscription();
       if (action === "start") {
         if (find("stop")) return {ok: true, state: "active", message: "麦克风已开启。"};

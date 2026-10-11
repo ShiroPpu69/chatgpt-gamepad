@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0
+
+- X invokes ChatGPT native Read aloud on the latest assistant reply, supporting a direct action or the reply’s More menu.
+- Recording blocks playback to avoid recording the read-aloud output.
+- Xbox-mode X defaults to SDL button 2, with edge-only triggering.
+- Background recovery task checks every minute after installation.
+
 ## 0.7.1 — first public release
 
 - B creates a fresh ChatGPT conversation and starts dictation; pressing it again confirms transcription and sends it.

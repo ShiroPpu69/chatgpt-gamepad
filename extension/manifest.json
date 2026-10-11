@@ -1,13 +1,41 @@
 {
   "manifest_version": 3,
   "name": "Q36 ChatGPT Voice Controller",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "B 新建听写并发送，A 当前对话听写，上下滚动正文，左右切换最近普通对话。",
   "minimum_chrome_version": "116",
-  "permissions": ["storage", "alarms", "scripting"],
-  "host_permissions": ["https://chatgpt.com/*"],
-  "background": {"service_worker": "background.js"},
-  "content_scripts": [{"matches": ["https://chatgpt.com/*"], "js": ["voice-dom.js", "composer-dom.js", "history-dom.js", "conversation-scroll.js", "content.js"], "run_at": "document_start"}],
-  "action": {"default_title": "Q36 ChatGPT 语音控制器", "default_popup": "popup.html"},
-  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:19836"}
+  "permissions": [
+    "storage",
+    "alarms",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "voice-dom.js",
+        "composer-dom.js",
+        "history-dom.js",
+        "conversation-scroll.js",
+        "read-aloud.js",
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Q36 ChatGPT 语音控制器",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:19836"
+  }
 }
